@@ -127,7 +127,7 @@ public class HelloController {
     @PostMapping("form-file-view")
     @ResponseBody
 //    java에서 파일을 처리하는 클래스 : MultipartFile
-    public String formPost2(Hello hello, @RequestParam(value = "photo") MultipartFile photo) {
+    public String formPost2(/* text형식*/Hello hello , /* file형식*/@RequestParam(value = "photo") MultipartFile photo) {
         System.out.println("hello");
         System.out.println(photo.getOriginalFilename());
         return hello.toString();

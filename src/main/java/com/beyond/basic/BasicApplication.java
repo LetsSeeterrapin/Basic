@@ -1,4 +1,4 @@
-package com.beyond.basic.b1_hello;
+package com.beyond.basic;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

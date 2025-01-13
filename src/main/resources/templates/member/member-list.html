@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>회원목록조회</title>
+</head>
+<body>
+<div th:replace="member/header :: headerFragment"></div>
+
+<table>
+    <thead>
+    <tr>
+        <th>id</th><th>이름</th><th>이메일</th>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="m : ${memberList}">
+            <td th:text="${m.id}"></td>
+            <td th:text="${m.name}"></td>
+            <td th:text="${m.email}"></td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

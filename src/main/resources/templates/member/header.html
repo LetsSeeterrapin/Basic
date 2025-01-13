@@ -1,0 +1,19 @@
+<!doctype html>
+<html lang="en" xmlns:th = "http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<!-- headerFragment 라는 이름으로 헤더로 쓰겠다고 설정 -->
+
+<div th:fragment="headerFragment">
+    <a href="/member/list">회원목록조회</a>
+    <a href="/member/create">회원등록</a>
+</div>
+
+</body>
+</html>

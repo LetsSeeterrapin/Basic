@@ -18,8 +18,8 @@
     async function postData(){
         const name = document.getElementById("name").value;
         const email=document.getElementById("email").value;
-        serverData.append(name, email);
-        const result = await axios.post("http://localhost:8080/hello/axios-json-view", serverData);
+        serverData.append(name, email);//({name:name},{email:email}) 을
+        const result = await axios.post("http://localhost:8080/hello/axios-json-view", serverData/*js객체*/);
         console.log(result.data);
 
     }
