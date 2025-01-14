@@ -11,18 +11,15 @@
 <div th:replace="member/header :: headerFragment"></div>
 <table>
     <thead>
-    <tr>
-        <th>이름</th>
-        <th>이메일</th>
-        <th>비밀번호</th>
-    </tr>
+
+    <tr><td>이름</td><td th:text=$"{member.name}"></td></tr>
+    <tr><td>이메일</td><td th:text=$"{member.email}"></td></tr>
+    <tr><td>비밀번호</td><td th:text=$"{member.password}"></td></tr>
+
     </thead>
     <tbody>
-    <tr>
-        <td>이준서</td>
-        <td>이준서@naver.com</td>
-        <td>1234</td>
-    </tr>
+
+
     </tbody>
 </table>
 

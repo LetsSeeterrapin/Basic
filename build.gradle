@@ -22,9 +22,15 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
-//	컴파일시점에 필여한 라이브러리를 명시한 것
+//	컴파일시점에 필요한 라이브러리를 명시한 것
 	compileOnly 'org.projectlombok:lombok'
 	annotationProcessor 'org.projectlombok:lombok'
+
+//	mariadb클라이언트 추가
+	runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+
+//	DB연결 및 관리를 위한 의존성 : jdbc, ibatis(mybatis), jpa(spring data jpa)
+	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
 }
 
 tasks.named('test') {
