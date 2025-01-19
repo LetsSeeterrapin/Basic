@@ -13,6 +13,7 @@ public class MemberMemoryRepository {
     private List<Member> memberList = new ArrayList<>();
 
     public static Long id = 1L;
+
     public List<Member> findAll() {
         return this.memberList;
     }

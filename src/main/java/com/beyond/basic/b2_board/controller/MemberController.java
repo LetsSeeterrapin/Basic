@@ -5,6 +5,7 @@ import com.beyond.basic.b2_board.dtos.MemberCreateDto;
 import com.beyond.basic.b2_board.dtos.MemberDetailDto;
 import com.beyond.basic.b2_board.dtos.MemberListRes;
 import com.beyond.basic.b2_board.service.MemberService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,7 @@ import java.util.NoSuchElementException;
 
 @Controller
 @RequestMapping("/member")
+@RequiredArgsConstructor
 public class MemberController {
 ////    의존성주입(DI) 방법1. Autowired 어노테이션 사용 : 필드주입
 //    @Autowired
@@ -39,7 +41,7 @@ public class MemberController {
 
 //    의존성주입(DI) 방법3 RequiredArgs 어노테이션 사용방법
 //    RequiredArgs : 반드시 초기화 되어야 하는 필드(final 키워드 등)를 대상으로 생성자를 자동으로 만들어주는 어노테이션
-    private MemberService memberService;
+    private final MemberService memberService;
 
 
 //    홈화면
@@ -64,7 +66,10 @@ public class MemberController {
             MemberDetailDto dto = memberService.findById(id);
             model.addAttribute("member", dto);
                 return "/member/member-detail";
-            } catch (NoSuchElementException e){
+            }catch (NoSuchElementException e) {
+            model.addAttribute("errorMessage", e.getMessage());
+            return "/member/member-error";
+            }catch (RuntimeException e){
                 model.addAttribute("errorMessage", e.getMessage());
                 return "/member/member-error";
         }
@@ -79,8 +84,7 @@ public class MemberController {
     @PostMapping("/create") // Post 요청과 메서드를 맵핑(연결)하는 어노테이션.
 //                            // Post 요청 : 클라이언트가 서버로 데이터를 전송할때 쓰는 HTTP메서드,
 //                               보통 폼데이터 전송, 파일 업로드, 데이터 생성 등의 용도
-    @ResponseBody
-    public String memberCreatePost(@RequestBody MemberCreateDto memberCreateDto, Model model) {
+    public String memberCreatePost(@ModelAttribute MemberCreateDto memberCreateDto, Model model) {
 
         try {
             memberService.save(memberCreateDto); // 여기서 Dto형태의 데이터를 Service로 보내면,

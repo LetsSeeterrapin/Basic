@@ -1,16 +1,36 @@
-#?? ??? .properties???? ?? ??
-#.? ?? ????? ?? => ??? : ??? ??? ???? ??.
+#spring.application.name=basic
+
+#아래 방식은 .properties 확장자에 의한 방식
+#.을통해 계층구조를 표현 => 문제점 : 중복이 발생할 가능성이 많음.
 #server.port=8081
 
-#?? ??? .yml ?? .yaml ???? ?? ??
-#???? ??? ?? ?? ??? ??
+#아래 방식은 .yml 또는 .yaml 확장자에 의한 방식
+#들여쓰기 방식을 통해서 계층구조를 표현
 #server:
-#    port:8081
+#   port: 8081
 
 spring:
-#  ??? jdbc?? db?? ??? jdbc????? mybatis, jpa? ?? ??? ??? ?.
+#  아래의 jdbc기본 db관련 설정은 jdbc뿐만 아니라 mybatis, jpa등 모든 기술의 근간이 된다.
   datasource:
     driver-class-name: org.mariadb.jdbc.Driver
     url: jdbc:mariadb://localhost:3307/basic
     username: junseo
     password: 1234
+  jpa:
+    database: mysql
+    #    innoDB사용 설정
+    database-platform: org.hibernate.dialect.MariaDBDialect
+    #    ddl문 자동생성. 테이블은 자동반영(생성)해주나, 스키마는 반드시 사전에 생성필요
+    generate-ddl: true  #ddl auto 설정.
+    #    jpa는 인터페이스이고, hibernate가 jpa의 실질적인 구현체(실질적인 기능 구현)
+    hibernate:
+      #      create : 매번 table을 drop 후 재생성
+      #      update : entity변경사항만 alter를 적용하고 기존데이터 유지.(모든 변경사항을 alter하는 것은 아님 - 컬럼의 추가 정도만 반영.)
+      #      validate : 실제DB와의 차이만을 check하고 콘솔로만 출력.
+      ddl-auto: update
+    #      콘솔창에 ddl, dml문을 출력하여 보여주는 옵션
+    show_sql: true
+
+# mapper파일(mybatis의 쿼리파일)의 위치를 명시. 기본적으로 resorces 폴더 밑 scan
+mybatis:
+  mapper-locations: classpath:/mapper/**/*.xml
