@@ -35,6 +35,13 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 
+//	jsp관련 의존성 추가
+	implementation 'org.apache.tomcat.embed:tomcat-embed-jasper'
+//	jstl을 위한 의존성 : jstl은 jsp화면 안에서 java문법을 쓰기위한 기술
+	implementation 'javax.servlet:jstl'
+
+//	swagger사용을 위한 의존성 추가
+	implementation 'io.springfox:springfox-boot-starter:3.0.0'
 
 }
 

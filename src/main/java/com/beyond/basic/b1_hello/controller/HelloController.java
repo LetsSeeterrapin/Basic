@@ -23,8 +23,8 @@ public class HelloController {
     /// case1.서버가 사용자에게 단순 String 데이터 return(get요청) - @ResponseBody 있을 때
     /// case2.서버가 사용자에게 화면을 return(get요청) - @ResponseBody 없을 때
     @GetMapping("")
-//    @ResponseBody
-//    @ResponseBody가 없고, return타입이 String인 경우 서버는 templates폴더 밑에 helloworld.html화면을 리턴
+//    @ResponseBody     // @ResponseBody가 있으면, return값 그대로 출력(templates폴더를 타지않음)
+//    @ResponseBody가 없고, return타입이 String인 경우 서버는 templates폴더 밑에 (내가 쓴 String).html화면을 리턴
     public String helloWorld() {
 
         return "helloworld";
@@ -39,6 +39,7 @@ public class HelloController {
 //        ObjectMapper objectMapper = new ObjectMapper();
 //        Hello h1 = new Hello("hongildong","hongil@naver.com");
 //        String value = objectMapper.writeValueAsString(h1);
+
 //        직접 json으로 직렬화 할 필요 없이, return타입을 클래스로 지정시에 자동으로 직렬화
         Hello h1 = new Hello("honggildong", "hongil@naver.com");
         return h1;
